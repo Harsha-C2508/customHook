@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
-const useTimeout = () => {
+const useTimeout = (delay) => {
   const [ready,setReady] = useState(false)
   
   useEffect(()=>{
      let timer = setTimeout(()=>{
          setReady(true)
-     },5000)
+     },delay)
      return()=>{
       clearTimeout(timer)
      }
   },[])
-  return ready
+  return { ready: ready }
 }
 
 export default useTimeout
